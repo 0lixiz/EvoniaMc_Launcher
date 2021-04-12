@@ -4,3 +4,6 @@
 /target/
 /logs/
 /dist/
+/.gitignore/
+/.md/
+/.yml/
