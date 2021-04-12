@@ -1,13 +1,13 @@
 {
-  "name": "helioslauncherfr",
-  "version": "1.8.0",
-  "productName": "HeliosLauncherFR",
-  "description": "Launcher Minecraft Moddé",
+  "name": "utopicubelauncher",
+  "version": "1.4.0",
+  "productName": "Utopicube Launcher",
+  "description": "Launcher de développement",
   "author": "Daniel Scalzi (https://github.com/dscalzi/) & Zapto",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/ZaptoInc/HeliosLauncherFR",
+  "homepage": "https://github.com/0lixiz/Utopicube_Launcher",
   "bugs": {
-    "url": "https://github.com/ZaptoInc/HeliosLauncherFR/issues"
+    "url": "https://github.com/0lixiz/Utopicube_Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -48,6 +48,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZaptoInc/HeliosLauncherFR.git"
+    "url": "git+https://github.com/0lixiz/Utopicube_Launcher.git"
   }
 }
