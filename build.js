@@ -21,10 +21,10 @@ builder.build({
         appId: 'helioslauncherfr',
         productName: 'Utopicube-Launcher',
         artifactName: '${productName}-setup-${version}.${ext}',
-        copyright: 'Copyright © 2018-2021 Daniel Scalzi & Zapto',
+        copyright: 'Copyright © 2018-2021 Utopicube',
         directories: {
             buildResources: 'build',
-            output: 'dist'
+            output: 'build/dist'
         },
         win: {
             target: [
@@ -46,10 +46,10 @@ builder.build({
         },
         linux: {
             target: 'AppImage',
-            maintainer: 'Daniel Scalzi',
-            vendor: 'Daniel Scalzi',
-            synopsis: 'Modded Minecraft Launcher',
-            description: 'Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.',
+            maintainer: 'Gongora Iban',
+            vendor: 'Gongora Iban',
+            synopsis: 'Utopicube Launcher',
+            description: 'Launcher de Utopicube V6',
             category: 'Game'
         },
         compression: 'maximum',
@@ -62,7 +62,7 @@ builder.build({
         asar: true
     }
 }).then(() => {
-    console.log('Build complete!')
+    console.log('Build fini !')
 }).catch(err => {
     console.error('Error during build!', err)
 })
