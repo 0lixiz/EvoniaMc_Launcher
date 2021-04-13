@@ -6,9 +6,12 @@
     <img src="https://img.shields.io/badge/version-1.5.5-dark_green.svg?style=for-the-badge" alt="version">
 </p>
 
+<br>
+<br>
 ---
 Discord:
-[![discord](https://discordapp.com/api/guilds/520907364124327972/embed.png?style=banner3)][discord]
+<br>
+https://discord.gg/zNWUXdt
 
 ---
 
@@ -22,5 +25,3 @@ Sources:
 ---
 Copyright 2021 Utopicube. All rights reserved.
 
-
-[discord]: https://discord.gg/zNWUXdt 'Discord'
