@@ -17,6 +17,6 @@ Sources:
 </p>
 
 ---
-Copyright 2021 [![discord]Utopicube][discord]. All rights reserved.
+Copyright 2021 [discord]Utopicube. All rights reserved.
 
 [discord]: https://discord.gg/zNWUXdt
