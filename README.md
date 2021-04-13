@@ -7,12 +7,14 @@
 </p>
 
 ---
+Discord:
 [![discord](https://discordapp.com/api/guilds/520907364124327972/embed.png?style=banner3)][discord]
----
-
 
 ---
 
+
+---
+Sources:
 <p>
     Basé sur le travail de Daniel Scalzi (https://github.com/dscalzi/HeliosLauncher)
 </p>
