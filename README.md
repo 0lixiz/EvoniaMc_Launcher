@@ -11,15 +11,12 @@
 
 ---
 
-Discord:
-<br>
-https://discord.gg/zNWUXdt
-
 Sources:
 <p>
     Basé sur le travail de Daniel Scalzi (https://github.com/dscalzi/HeliosLauncher)
 </p>
 
 ---
-Copyright 2021 Utopicube. All rights reserved.
+Copyright 2021 [![discord]Utopicube][discord]. All rights reserved.
 
+[discord]: https://discord.gg/zNWUXdt 'Discord'
