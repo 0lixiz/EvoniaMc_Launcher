@@ -19,4 +19,4 @@ Sources:
 ---
 Copyright 2021 [![discord]Utopicube][discord]. All rights reserved.
 
-[discord]: https://discord.gg/zNWUXdt 'Discord'
+[discord]: https://discord.gg/zNWUXdt
