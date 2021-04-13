@@ -15,10 +15,6 @@ Discord:
 <br>
 https://discord.gg/zNWUXdt
 
----
-
-
----
 Sources:
 <p>
     Basé sur le travail de Daniel Scalzi (https://github.com/dscalzi/HeliosLauncher)
