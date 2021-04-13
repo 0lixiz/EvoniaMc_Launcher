@@ -2,13 +2,12 @@
 
 <h1>Utopicube Launcher</h1>
 
+
+---
+[![discord](https://discordapp.com/api/guilds/520907364124327972/embed.png?style=banner3)][discord]
 <p>
     <img src="https://img.shields.io/badge/version-1.5.5-dark_green.svg?style=for-the-badge" alt="version">
 </p>
-
-
----
-[![discord](https://discordapp.com/api/guilds/211524927831015424/embed.png?style=banner3)][discord]
 ---
 
 
