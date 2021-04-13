@@ -8,7 +8,7 @@
 
 
 ---
-[![discord](https://img.shields.io/badge/version-1.2.2-dark_green.svg?style=for-the-badge)][discord]
+[![discord](https://discordapp.com/api/guilds/211524927831015424/embed.png?style=banner3)][discord]
 ---
 
 
