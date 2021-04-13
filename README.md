@@ -17,4 +17,4 @@ Sources:
 </p>
 
 ---
-Copyright 2021 <a href="https://discord.gg/zNWUXdt" target="_BLANK"></a>. All rights reserved.
+Copyright 2021 <a href="https://discord.gg/zNWUXdt" target="_BLANK">Utopicube</a>. All rights reserved.
