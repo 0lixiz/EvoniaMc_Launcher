@@ -1,8 +1,8 @@
-<p align="center"><img  src="https://cdn.discordapp.com/attachments/830383515425570826/830383624544059392/defaultCircle.png" height="130px" alt="Paladium"></p>
+<p><img  src="https://cdn.discordapp.com/attachments/830383515425570826/830383624544059392/defaultCircle.png" height="130px" alt="Paladium"></p>
 
 <h1>Utopicube Launcher</h1>
 
-<p align="center">
+<p>
     <img src="https://img.shields.io/badge/version-1.5.7-dark_green.svg?style=for-the-badge" alt="version">
 </p>
 
