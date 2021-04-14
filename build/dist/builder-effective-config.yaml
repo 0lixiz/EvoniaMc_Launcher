@@ -1,0 +1,35 @@
+directories:
+  output: build/dist
+  buildResources: build
+appId: helioslauncherfr
+productName: Utopicube-Launcher
+artifactName: ${productName}-setup-${version}.${ext}
+copyright: Copyright © 2018-2021 Utopicube
+win:
+  target:
+    - target: nsis
+      arch: x64
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+mac:
+  target: dmg
+  category: public.app-category.games
+linux:
+  target: AppImage
+  maintainer: Gongora Iban
+  vendor: Gongora Iban
+  synopsis: Utopicube Launcher
+  description: Launcher de Utopicube V6
+  category: Game
+compression: maximum
+files:
+  - filter:
+      - '!{dist,.gitignore,.vscode,docs,dev-app-update.yml,.travis.yml,.nvmrc,.eslintrc.json,build.js}'
+extraResources:
+  - filter:
+      - libraries
+asar: true
+electronVersion: 12.0.1
