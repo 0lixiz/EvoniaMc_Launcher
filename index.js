@@ -96,65 +96,41 @@ let win
 
 function createWindow() {
 
-    mainWindow = new BrowserWindow({
-        width: 1300,
-        height: 800,
-        frame: false,
-        show: false,
-        transparent: true,
+    win = new BrowserWindow({
+        width: 980,
+        height: 552,
         icon: getPlatformIcon('logo'),
-        preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
-        resizable: false,
-        fullscreenable: false,
-        titleBarStyle: 'customButtonsOnHover',
+        frame: false,
         webPreferences: {
+            preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
             nodeIntegration: true,
-            enableRemoteModule: true
-        }
-    });
-    mainWindow.on('close', () => mainWindow.removeAllListeners());
-    mainWindow.on('closed', () => { mainWindow = null; });
-    mainWindow.loadURL(url.format({
+            contextIsolation: false,
+            enableRemoteModule: true,
+            worldSafeExecuteJavaScript: true
+        },
+        backgroundColor: '#171614'
+    })
+
+    ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)))
+
+    win.loadURL(url.format({
         pathname: path.join(__dirname, 'app', 'app.ejs'),
         protocol: 'file:',
         slashes: true
     }))
-    ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)))
-    app.ipcMain.on('ready', () => {
-        if (loadingWindow !== null) {
-            loadingWindow.close();
-        }
-        // show main window
-        if (mainWindow !== null) {
-            mainWindow.show();
-        }
-    });
-}
 
-function createLoadingWindow() {
-    loadingWindow = new BrowserWindow({
-        width: 300,
-        height: 400,
-        frame: false,
-        show: false,
-        icon: getPlatformIcon('logo'),
-        preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
-        resizable: false,
-        titleBarStyle: 'customButtonsOnHover',
-        backgroundColor: '#1c1a1b',
-        webPreferences: {
-            enableRemoteModule: false
-        }
-    });
-    loadingWindow.on('ready-to-show', () => loadingWindow.show());
-    loadingWindow.webContents.on('devtools-opened', () => loadingWindow.webContents.closeDevTools());
-    loadingWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'app', 'loading.ejs'),
-        protocol: 'file:',
-        slashes: true
-    }))
-}
+    /*win.once('ready-to-show', () => {
+        win.show()
+    })*/
 
+    win.removeMenu()
+
+    win.resizable = true
+
+    win.on('closed', () => {
+        win = null
+    })
+}
 
 function createMenu() {
     
@@ -236,12 +212,8 @@ function getPlatformIcon(filename){
     return path.join(__dirname, 'app', 'assets', 'images', `${filename}.${ext}`)
 }
 
-
-app.on('ready', () => {
-    createMenu();
-    createLoadingWindow();
-    createWindow();
-});
+app.on('ready', createWindow)
+app.on('ready', createMenu)
 
 app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar

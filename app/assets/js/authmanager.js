@@ -9,11 +9,9 @@
  * @module authmanager
  */
 // Requirements
-const ConfigManager = require('./configmanager')
-const LoggerUtil    = require('./loggerutil')
-const Mojang        = require('./mojang')
-const logger        = LoggerUtil('%c[AuthManager]', 'color: #a02d2a; font-weight: bold')
-const loggerSuccess = LoggerUtil('%c[AuthManager]', 'color: #209b07; font-weight: bold')
+const ConfigManager     = require('./configmanager')
+const { v3: uuid }      = require("uuid");
+const { machineIdSync } = require("node-machine-id");
 
 // Functions
 
@@ -27,22 +25,33 @@ const loggerSuccess = LoggerUtil('%c[AuthManager]', 'color: #209b07; font-weight
  * @returns {Promise.<Object>} Promise which resolves the resolved authenticated account object.
  */
 exports.addAccount = async function(username, password){
-    try {
-        const session = await Mojang.authenticate(username, password, ConfigManager.getClientToken())
-        if(session.selectedProfile != null){
-            const ret = ConfigManager.addAuthAccount(session.selectedProfile.id, session.accessToken, username, session.selectedProfile.name)
-            if(ConfigManager.getClientToken() == null){
-                ConfigManager.setClientToken(session.clientToken)
-            }
-            ConfigManager.save()
-            return ret
-        } else {
-            throw new Error('NotPaidAccount')
+    let hash = require("crypto").createHash("sha512");
+    hash.update(password);
+    password = hash.digest("hex");
+
+    await fetch(
+      `https://www.utopicube.fr/connect.php?pseudo=${username}&password=${password}`
+    )
+    .then((response) => response.json())
+    .then((response) => {
+        if ("ok" != response.status) {
+          throw new Error(
+            "Le pseudo ou le mot de passe que vous avez entré est incorrect. Veuillez réessayer."
+          );
         }
-        
-    } catch (err){
-        return Promise.reject(err)
+    });
+
+    const ret = ConfigManager.addAuthAccount(
+      uuid(username + machineIdSync(), uuid.DNS),
+      "ImCrakedLOL",
+      username,
+      username
+    );
+    if (ConfigManager.getClientToken() == null) {
+      ConfigManager.setClientToken("ImCrakedLOL");
     }
+    ConfigManager.save();
+    return ret;
 }
 
 /**
@@ -54,8 +63,6 @@ exports.addAccount = async function(username, password){
  */
 exports.removeAccount = async function(uuid){
     try {
-        const authAcc = ConfigManager.getAuthAccount(uuid)
-        await Mojang.invalidate(authAcc.accessToken, ConfigManager.getClientToken())
         ConfigManager.removeAuthAccount(uuid)
         ConfigManager.save()
         return Promise.resolve()
@@ -75,25 +82,5 @@ exports.removeAccount = async function(uuid){
  * otherwise false.
  */
 exports.validateSelected = async function(){
-    const current = ConfigManager.getSelectedAccount()
-    const isValid = await Mojang.validate(current.accessToken, ConfigManager.getClientToken())
-    if(!isValid){
-        try {
-            const session = await Mojang.refresh(current.accessToken, ConfigManager.getClientToken())
-            ConfigManager.updateAuthAccount(current.uuid, session.accessToken)
-            ConfigManager.save()
-        } catch(err) {
-            logger.debug('Error while validating selected profile:', err)
-            if(err && err.error === 'ForbiddenOperationException'){
-                // What do we do?
-            }
-            logger.log('Account access token is invalid.')
-            return false
-        }
-        loggerSuccess.log('Account access token validated.')
-        return true
-    } else {
-        loggerSuccess.log('Account access token validated.')
-        return true
-    }
+    return true
 }
