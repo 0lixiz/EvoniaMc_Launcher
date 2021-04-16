@@ -337,16 +337,18 @@ exports.updateAuthAccount = function(uuid, accessToken){
  * @param {string} accessToken The accessToken of the authenticated account.
  * @param {string} username The username (usually email) of the authenticated account.
  * @param {string} displayName The in game name of the authenticated account.
+ * @param {string} skinUri The URI of user skne
  * 
  * @returns {Object} The authenticated account object created by this action.
  */
-exports.addAuthAccount = function(uuid, accessToken, username, displayName){
+exports.addAuthAccount = function(uuid, accessToken, username, displayName, skinUri){
     config.selectedAccount = uuid
     config.authenticationDatabase[uuid] = {
         accessToken,
         username: username.trim(),
         uuid: uuid.trim(),
-        displayName: displayName.trim()
+        displayName: displayName.trim(),
+        skin: skinUri,
     }
     return config.authenticationDatabase[uuid]
 }

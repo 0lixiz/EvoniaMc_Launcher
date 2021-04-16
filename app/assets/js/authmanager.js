@@ -10,7 +10,7 @@
  */
 // Requirements
 const ConfigManager     = require('./configmanager')
-const { v3: uuid }      = require("uuid");
+const { v3: uuidv3 }      = require("uuid");
 const { machineIdSync } = require("node-machine-id");
 
 // Functions
@@ -29,8 +29,12 @@ exports.addAccount = async function(username, password){
     hash.update(password);
     password = hash.digest("hex");
 
+    let mode = null;
+    let uuid = null;
+    let skin = null;
+
     await fetch(
-      `https://www.utopicube.fr/connect.php?pseudo=${username}&password=${password}`
+      `https://api.utopicube.dev/?pseudo=${username}&password=${password}`
     )
     .then((response) => response.json())
     .then((response) => {
@@ -39,14 +43,21 @@ exports.addAccount = async function(username, password){
             "Le pseudo ou le mot de passe que vous avez entré est incorrect. Veuillez réessayer."
           );
         }
+
+        mode = response.mode;
+        if ("link" == mode) {
+          skin = response.skin
+        }
     });
 
     const ret = ConfigManager.addAuthAccount(
-      uuid(username + machineIdSync(), uuid.DNS),
+      "uuid" == mode ? uuid : uuidv3(username + machineIdSync(), uuidv3.DNS),
       "ImCrakedLOL",
       username,
-      username
+      username,
+      "link" == mode ? skin : null
     );
+
     if (ConfigManager.getClientToken() == null) {
       ConfigManager.setClientToken("ImCrakedLOL");
     }
@@ -70,7 +81,7 @@ exports.removeAccount = async function(uuid){
         return Promise.reject(err)
     }
 }
-
+    
 /**
  * Validate the selected account with Mojang's authserver. If the account is not valid,
  * we will attempt to refresh the access token and update that value. If that fails, a
