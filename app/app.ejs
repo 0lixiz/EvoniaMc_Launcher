@@ -35,6 +35,39 @@
         <%- include('landing') %>
     </div>
     <%- include('overlay') %>
+    <div id="loadingContainer">
+        <div id="loadingContent">
+            <div id="loadSpinnerContainer">
+                <img id="loadCenterImage" src="assets/images/LoadingLogo.png">
+                <style>
+                    .loading {
+                      position: relative;
+                      font-family: sans-serif;
+                      text-transform: uppercase;
+                      font-size: 2em;
+                      letter-spacing: 4px;
+                      overflow: hidden;
+                      background: linear-gradient(90deg, #2b475e, #c8c3bc, #2b475e);
+                      background-repeat: no-repeat;
+                      background-size: 80%;
+                      animation: animate 3s linear infinite;
+                      -webkit-background-clip: text;
+                      -webkit-text-fill-color: rgba(255, 255, 255, 0);
+                    }
+
+                    @keyframes animate {
+                      0% {
+                        background-position: -500%;
+                      }
+                      100% {
+                        background-position: 500%;
+                      }
+                    }
+                </style>
+                <p class="loading">Utopicube</p>
+            </div>
+        </div>
+    </div>
     <script>
         // Load language
         for(let key of Object.keys(Lang.query('html'))){
