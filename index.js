@@ -94,6 +94,7 @@ app.allowRendererProcessReuse = true
 // be closed automatically when the JavaScript object is garbage collected.
 let win
 
+
 function createWindow() {
 
     win = new BrowserWindow({
@@ -110,7 +111,6 @@ function createWindow() {
         },
         backgroundColor: '#171614'
     })
-
     ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)))
 
     win.loadURL(url.format({
@@ -119,18 +119,41 @@ function createWindow() {
         slashes: true
     }))
 
-    /*win.once('ready-to-show', () => {
-        win.show()
-    })*/
 
     win.removeMenu()
 
     win.resizable = true
-
+    
     win.on('closed', () => {
         win = null
     })
+
+    
 }
+
+function createLoadingWindow() {
+    loadingWindow = new BrowserWindow({
+        width: 300,
+        height: 400,
+        frame: false,
+        show: false,
+        icon: getPlatformIcon('logo'),
+        resizable: false,
+        titleBarStyle: 'customButtonsOnHover',
+        backgroundColor: '#1c1a1b',
+        webPreferences: {
+            enableRemoteModule: false
+        }
+    });
+    loadingWindow.webContents.on('devtools-opened', () => loadingWindow.webContents.closeDevTools());
+    loadingWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'app', 'loading.ejs'),
+        protocol: 'file:',
+        slashes: true
+    }))
+    loadingWindow.show()
+}
+
 
 function createMenu() {
     
@@ -212,8 +235,20 @@ function getPlatformIcon(filename){
     return path.join(__dirname, 'app', 'assets', 'images', `${filename}.${ext}`)
 }
 
-app.on('ready', createWindow)
-app.on('ready', createMenu)
+
+app.on('ready', () => {
+    createMenu();
+    createWindow();
+});
+
+function loaded() {
+    if (loadingWindow !== null) {
+        loadingWindow.close();
+    }
+    if (win !== null) {
+        win.show();
+    }
+}
 
 app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar

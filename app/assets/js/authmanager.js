@@ -34,7 +34,7 @@ exports.addAccount = async function(username, password){
     let skin = null;
 
     await fetch(
-      `https://api.utopicube.dev/?pseudo=${username}&password=${password}`
+      `https://www.utopicube.fr/api/auth/?pseudo=${username}&password=${password}`
     )
     .then((response) => response.json())
     .then((response) => {
@@ -45,8 +45,10 @@ exports.addAccount = async function(username, password){
         }
 
         mode = response.mode;
-        if ("link" == mode) {
-          skin = response.skin
+        if ("lien" == mode) {
+          skin = response.lien
+        } else if ("uuid" == mode) {
+          uuid = response.uuid
         }
     });
 
