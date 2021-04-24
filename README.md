@@ -1,4 +1,4 @@
-<p><img  src="https://cdn.discordapp.com/attachments/830383515425570826/830383624544059392/defaultCircle.png" height="130px" alt="Paladium"></p>
+<p><img  src="https://cdn.discordapp.com/attachments/834520539040841803/835467730265571368/test.png" height="130px" alt="Paladium"></p>
 
 <h1>Evonia Launcher</h1>
 
