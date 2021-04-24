@@ -1,13 +1,13 @@
 {
-  "name": "utopicubelauncher",
+  "name": "evonialauncher",
   "version": "1.5.7",
   "productName": "Utopicube Launcher",
   "description": "Launcher de développement",
   "author": "Utopicube",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/0lixiz/Utopicube_Launcher",
+  "homepage": "https://github.com/0lixiz/EvoniaMc_Launcher",
   "bugs": {
-    "url": "https://github.com/0lixiz/Utopicube_Launcher/issues"
+    "url": "https://github.com/0lixiz/EvoniaMc_Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -50,6 +50,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/0lixiz/Utopicube_Launcher.git"
+    "url": "git+https://github.com/0lixiz/EvoniaMc_Launcher.git"
   }
 }

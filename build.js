@@ -18,10 +18,10 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-        appId: 'helioslauncherfr',
-        productName: 'Utopicube-Launcher',
+        appId: 'evonialauncher',
+        productName: 'Evonia Launcher',
         artifactName: '${productName}-setup-${version}.${ext}',
-        copyright: 'Copyright © 2018-2021 Utopicube',
+        copyright: 'Copyright © 2018-2021 EvoniaNetwork',
         directories: {
             buildResources: 'build',
             output: 'build/dist'
@@ -46,10 +46,10 @@ builder.build({
         },
         linux: {
             target: 'AppImage',
-            maintainer: 'Gongora Iban',
-            vendor: 'Gongora Iban',
-            synopsis: 'Utopicube Launcher',
-            description: 'Launcher de Utopicube V6',
+            maintainer: 'EvoniaNetwork',
+            vendor: 'Evonia Launcher',
+            synopsis: 'Evonia Launcher',
+            description: 'Launcher de EvoniaMc',
             category: 'Game'
         },
         compression: 'maximum',

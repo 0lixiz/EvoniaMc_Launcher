@@ -49,7 +49,7 @@ if(!isDev){
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
                 if(process.platform === 'darwin'){
-                    info.darwindownload = `https://github.com/0lixiz/Utopicube_Launcher/releases/download/v${info.version}/Utopicube-Launcher-setup-${info.version}.dmg`
+                    info.darwindownload = `https://github.com/0lixiz/EvoniaMc_Launcher/releases/download/v${info.version}/Utopicube-Launcher-setup-${info.version}.dmg`
                     showUpdateUI(info)
                 }
                 
