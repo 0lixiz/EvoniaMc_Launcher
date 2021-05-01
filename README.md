@@ -12,6 +12,8 @@
 ---
 
 Sources:
+<br>
+<p>Développement par: <a href="https://devmetrics.shop" target="_BLANK">Guillaume Vandreissche</a></p>
 <p>
     Basé sur le travail de Daniel Scalzi (https://github.com/dscalzi/HeliosLauncher)
 </p>
