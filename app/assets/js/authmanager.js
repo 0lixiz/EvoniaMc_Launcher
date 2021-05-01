@@ -12,7 +12,7 @@
 const ConfigManager     = require('./configmanager')
 const { v3: uuidv3 }      = require("uuid");
 const { machineIdSync } = require("node-machine-id");
-
+const bcrypt = require('bcrypt');
 // Functions
 
 /**
@@ -24,44 +24,82 @@ const { machineIdSync } = require("node-machine-id");
  * @param {string} password The account password.
  * @returns {Promise.<Object>} Promise which resolves the resolved authenticated account object.
  */
+
+const hashPassword = async (password, saltRounds = 10) => {
+    try {
+        // Generate a salt
+        const salt = await bcrypt.genSalt(saltRounds);
+
+        // Hash password
+        return await bcrypt.hash(password, salt);
+    } catch (error) {
+        console.log(error);
+    }
+
+    // Return null if error
+    return null;
+};
+
 exports.addAccount = async function(username, password){
-    let hash = require("crypto").createHash("sha512");
-    hash.update(password);
-    password = hash.digest("hex");
+    if (username.includes('@')) {
+      await fetch(
+          `https://api.evoniamc.eu/api/auth/?email=${username}&password=${password}`
+        )
+        .then((response) => response.json())
+        .then((response) => {
+            if ("ok" != response.status) {
+              throw new Error(
+                "Le pseudo ou le mot de passe que vous avez entré est incorrect. Veuillez réessayer."
+              );
+            }
+            id = response.id
+            token = response.token
+            username = response.username
+            mode = response.mode
+            uuid = uuidv3(username + machineIdSync(), uuidv3.DNS)
 
-    let mode = null;
-    let uuid = null;
-    let skin = null;
+            if ("skin_url" == mode) {
+              token = "CrackedHelios"
+            } else if ("uuid" == mode) {
+              token = response.token
+            }
 
-    await fetch(
-      `https://api.evoniamc.eu/api/auth/?pseudo=${username}&password=${password}`
-    )
-    .then((response) => response.json())
-    .then((response) => {
-        if ("ok" != response.status) {
-          throw new Error(
-            "Le pseudo ou le mot de passe que vous avez entré est incorrect. Veuillez réessayer."
-          );
-        }
+        });
+    } else {
+      await fetch(
+          `https://api.evoniamc.eu/api/auth/?username=${username}&password=${password}`
+        )
+        .then((response) => response.json())
+        .then((response) => {
+            if ("ok" != response.status) {
+              throw new Error(
+                "Le pseudo ou le mot de passe que vous avez entré est incorrect. Veuillez réessayer."
+              );
+            }
+            id = response.id
+            token = response.token
+            username = response.username
+            mode = response.mode
+            uuid = uuidv3(username + machineIdSync(), uuidv3.DNS)
 
-        mode = response.mode;
-        if ("link" == mode) {
-          skin = response.lien
-        } else if ("uuid" == mode) {
-          uuid = response.uuid
-        }
-    });
+            if ("skin_url" == mode) {
+              token = "CrackedHelios"
+            } else if ("uuid" == mode) {
+              token = response.token
+            }
+
+        });
+    }
 
     const ret = ConfigManager.addAuthAccount(
-      "uuid" == mode ? uuid : uuidv3(username + machineIdSync(), uuidv3.DNS),
-      "ImCrakedLOL",
+      uuid,
+      token,
       username,
       username,
-      "link" == mode ? skin : null
     );
 
     if (ConfigManager.getClientToken() == null) {
-      ConfigManager.setClientToken("ImCrakedLOL");
+      ConfigManager.setClientToken(token)
     }
     ConfigManager.save();
     return ret;

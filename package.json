@@ -28,6 +28,7 @@
     "@electron/remote": "^1.0.4",
     "adm-zip": "^0.5.4",
     "async": "^3.2.0",
+    "bcrypt": "^5.0.1",
     "discord-rpc": "^3.2.0",
     "ejs": "^3.1.6",
     "ejs-electron": "^2.1.1",

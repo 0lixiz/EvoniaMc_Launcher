@@ -130,7 +130,7 @@ function updateSelectedAccount(authUser){
             username = authUser.displayName
         }
         if(authUser.uuid != null){
-            document.getElementById('avatarContainer').style.backgroundImage = `url('https://home.devmetrics.shop/api/lib/skins/skins.php?user=${authUser.username}&mode=head')`
+            document.getElementById('avatarContainer').style.backgroundImage = `url('https://api.evoniamc.eu/api/lib/skins/skins.php?user=${authUser.username}&mode=head')`
         }
     }
     user_text.innerHTML = username
