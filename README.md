@@ -1,6 +1,6 @@
 <p><img  src="https://cdn.discordapp.com/attachments/834520539040841803/835467730265571368/test.png" height="130px" alt="Paladium"></p>
 
-<h1>Evonia Launcher</h1>
+<h1>RacingCube Launcher</h1>
 
 <p>
     <img src="https://img.shields.io/badge/version-1.0.0-dark_green.svg?style=for-the-badge" alt="version">
@@ -12,6 +12,8 @@
 ---
 
 Sources:
+<br>
+<p>Développement par: <a href="https://devmetrics.shop" target="_BLANK">Guillaume Vandreissche</a></p>
 <p>
     Basé sur le travail de Daniel Scalzi (https://github.com/dscalzi/HeliosLauncher)
 </p>
