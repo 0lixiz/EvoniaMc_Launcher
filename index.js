@@ -102,6 +102,7 @@ function createWindow() {
         height: 552,
         icon: getPlatformIcon('logo'),
         frame: false,
+        show: false,
         webPreferences: {
             preload: path.join(__dirname, 'app', 'assets', 'js', 'preloader.js'),
             nodeIntegration: true,
@@ -113,11 +114,17 @@ function createWindow() {
     })
     ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)))
 
+    win.webContents.on('devtools-opened', () => win.webContents.closeDevTools());
+
+
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'app', 'app.ejs'),
         protocol: 'file:',
         slashes: true
     }))
+
+    setTimeout(() => loadingWindow.close(), 4000)
+    setTimeout(() => win.show(), 4000)
 
 
     win.removeMenu()
@@ -128,6 +135,7 @@ function createWindow() {
         win = null
     })
 
+
     
 }
 
@@ -136,13 +144,16 @@ function createLoadingWindow() {
         width: 300,
         height: 400,
         frame: false,
-        show: false,
         icon: getPlatformIcon('logo'),
         resizable: false,
+        slow: false,
         titleBarStyle: 'customButtonsOnHover',
         backgroundColor: '#1c1a1b',
         webPreferences: {
-            enableRemoteModule: false
+            enableRemoteModule: false,
+            nodeIntegration: true,
+            contextIsolation: false,
+            worldSafeExecuteJavaScript: true
         }
     });
     loadingWindow.webContents.on('devtools-opened', () => loadingWindow.webContents.closeDevTools());
@@ -151,7 +162,10 @@ function createLoadingWindow() {
         protocol: 'file:',
         slashes: true
     }))
-    loadingWindow.show()
+
+    setTimeout(() => loadingWindow.show(), 50)
+
+    loadingWindow.removeMenu()
 }
 
 
@@ -238,7 +252,9 @@ function getPlatformIcon(filename){
 
 app.on('ready', () => {
     createMenu();
+    createLoadingWindow();
     createWindow();
+
 });
 
 function loaded() {

@@ -24,12 +24,7 @@
     animation: rectFade 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
     animation-delay: 2.85s;
 }
-#Moon_LC {
-    opacity: 0;
-    animation: moonFade 0.5s ease-in-out forwards;
-    transform-origin: center;
-    animation-delay: 2.5s;
-}
+
 #Text_LC {
     opacity: 0;
     animation: textFade 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
@@ -54,59 +49,15 @@ h3 {
     opacity: 0;
     animation: moonsworthFlyIn 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
     transform-origin: center;
+    font-size: 4em;
+    padding-bottom: 40px;
 }
-#Star_1_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 4s;
+.center2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
-#Star_2_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 4.5s;
-}
-#Star_3_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 5s;
-}
-#Star_4_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 5.5s;
-}
-#Star_5_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 6s;
-}
-#Star_6_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 6.5s;
-}
-#Star_7_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 7s;
-}
-#Star_8_LC {
-    opacity: 0;
-    animation: starFade 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-    transform-origin: center;
-    animation-delay: 7.5s;
-}
-
-/**
- * Keyframes.
- */
 @keyframes bottomFade {
     from {
         transform: translateY(20px);
