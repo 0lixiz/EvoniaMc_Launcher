@@ -9,6 +9,28 @@
 <br>
 <br>
 
+**Systeme Requis**
+
+* [Node.js][nodejs] v14
+
+---
+
+**Cloner et installer les dépendances**
+
+```console
+> git clone https://github.com/evonianetwork/EvoniaMc_Launcher/
+> cd EvoniaMc_Launcher
+> npm install
+```
+
+---
+
+**Lancer L'application**
+
+```console
+> npm start
+```
+
 ---
 
 Sources:
