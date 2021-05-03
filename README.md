@@ -42,3 +42,5 @@ Sources:
 
 ---
 Copyright 2021 <a href="https://discord.gg/xd5VuMRduy" target="_BLANK">EvoniaMc</a>. All rights reserved.
+
+[nodejs]: https://nodejs.org/en/ 'Node.js'
